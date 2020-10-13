@@ -1,71 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap');
+
+
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px;
   line-height: 1;
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  background-repeat: no-repeat;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 
-textarea{
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
+textarea {
+	background: transparent;
+	border: none;
+	resize: none;
+	color: #f7f7f7;
+	border-left: 1px solid rgb(255, 255, 255);
+	padding: 10px;
 }
 
 .jumbotron {
-  text-align: center;
-  background-color: transparent;
-  color: black;
-  border-radius: 0;
-  border-bottom: 10px solid black;
+	text-align: center;
+	background-color: transparent;
+	color: rgb(255, 255, 255);
+	border-radius: 0;
+  border-bottom: 5px solid rgb(255, 255, 255);
 }
 
-.description{
-  white-space: pre-wrap;
+h1{
+  font-family: 'Playfair Display SC', serif;
+
 }
 
-.time-block{
-  text-align: center;
-  border-radius: 15px;
+.description {
+	white-space: pre-wrap;
+}
+
+.time-block {
+	text-align: center;
+	border-radius: 15px;
 }
 
 .row {
-  white-space: pre-wrap;
-  height: 80px;
-  border-top: 1px solid white;;
+	white-space: pre-wrap;
+	height: 80px;
+	border-top: 1px solid white;
 }
 
 .hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+	background-color: #ffffff;
+	color: #000000;
+	border-top: 1px dashed #ffffff;
 }
 
 .past {
-  background-color: #d3d3d3;
-  color: white;
+	background-color: #d3d3d3;
+	color: white;
 }
 
 .present {
-  background-color: #ff6961;
-  color: white;
+	background-color: #ff6961;
+	color: white;
 }
 
 .future {
-  background-color: #77dd77;
-  color: white;
+	background-color: #77dd77;
+	color: white;
 }
 
 .saveBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06AED5;
-  color: white;
+	border-left: 1px solid rgb(255, 255, 255);
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	background-color: #06aed5;
+	color: white;
 }
 
 .saveBtn i:hover {
-  font-size: 20px;
-  transition: all .3s ease-in-out;
+	font-size: 20px;
+	transition: all 0.3s ease-in-out;
+}
+
+.container {
+	border-style: solid;
+  padding: 20px 10px 20px 10px;
+  border:none;
+}
+
+.schedulerHeader {
+color: #eee;
+}
+
+
+footer {
+	width: 100%;
+	color: rgb(255, 255, 255);
+	text-align: center;
+	padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 10px;
 }
