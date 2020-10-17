@@ -1,186 +1,125 @@
-function showTime() {
-	var date = new Date();
-	var hourNow = date.getHours();
-	var minuteNow = date.getMinutes();
-	var secondNow = date.getSeconds();
-	var session = "PM";
-	var greeting;
+function init() {
+	var $digitalClock = $("#DigitalCLOCK");
+	var $greeting = $("#greeting");
 
-	if (hourNow > 18) {
-		greeting = "Good Evening";
-	} else if (hourNow > 12) {
-		greeting = "Good afternoon";
-	} else if (hourNow > 0) {
-		greeting = "Good morning";
-	} else {
-		greeting = "Welcome";
+	function getGreeting(hourNow, session) {
+		if (session === "AM") {
+			return "Good morning";
+		} else {
+			if (hourNow === 12 || hourNow < 7) {
+				return "Good afternoon";
+			}
+			return "Good Evening";
+		}
 	}
 
-	hourNow = hourNow < 10 ? "0" + hourNow : hourNow;
-	minuteNow = minuteNow < 10 ? "0" + minuteNow : minuteNow;
-	secondNow = secondNow < 10 ? "0" + secondNow : secondNow;
+	function updateTime() {
+		var currentTime = moment();
+		var greeting = getGreeting(
+			currentTime.format("hh"),
+			currentTime.format("A")
+		);
 
-	var time = hourNow + ":" + minuteNow + ":" + secondNow + " " + session;
+		// update the html view
+		$digitalClock.text(currentTime.format("hh:mm:ss A"));
+		$greeting.text(greeting);
+	}
 
-	document.getElementById("DigitalCLOCK").innerText = time;
-	document.getElementById("DigitalCLOCK").textContent = time;
-	document.getElementById("DigitalCLOCK").textContent = time;
-	document.getElementById("greeting").innerHTML = greeting;
+	function createSchedule() {
+		var $scheduleBody = $(".schedulerBody");
+		var currentTime = moment();
 
-	setTimeout(showTime, 1000);
+		var scheduleTime = moment();
+		var workingHour = scheduleTime.hour(8).minute(0).hour();
+		var schedule = "";
+		while (workingHour <= 22) {
+			// console.log(scheduleTime.format("hh:mm A"));
+			var format = scheduleTime.format("hh:mm A");
+			var scheduleHour = scheduleTime.hour();
+			var style = "past";
+			var scheduleValue = localStorage.getItem(scheduleHour) || "";
+
+			if (currentTime.hour() === scheduleHour) {
+				style = "present";
+			} else if (currentTime.hour() < scheduleHour) {
+				style = "future";
+			}
+
+			schedule += `
+		<div class="input-group input-group-lg ">
+			<div class="input-group-prepend">
+				<span class="input-group-text time-block">${format}</span>
+			</div>
+			<input type="text" class="form-control form ${style}" aria-label="Large" value="${scheduleValue}">
+			<button class="btn saveBtn" data-time="${scheduleHour}">
+				<i class="far fa-save"></i>
+			</button>
+	  	</div>
+	  	`;
+
+			scheduleTime.add(1, "hour");
+			workingHour = scheduleTime.hour();
+		}
+
+		$scheduleBody.html(schedule);
+
+		// var currentTime = moment();
+
+		// currentTime = currentTime.startOf("hour");
+		// var beforeTime = moment().startOf("day").add(8, "hours");
+
+		// function setTime(hour) {
+		// 	var time = beforeTime.add(hour, "h");
+		// 	time = time.format("hh:mm A");
+		// 	$(".block" + (hour - 1)).text(time);
+		// }
+
+		// for (let index = 1; index < 8; index++) {
+		// 	setTime(index);
+		// }
+
+		// function updateView(hour) {
+		// 	time1 = moment().startOf("day").add(hour, "hours");
+		// 	currentTime = currentTime.startOf("hour");
+		// 	if (currentTime.isAfter(time1)) {
+		// 		$(".form" + hour).addClass("past");
+		// 	} else if (currentTime.isBefore(time1)) {
+		// 		$(".form" + hour).addClass("future");
+		// 	} else if (currentTime.isSame(time1)) {
+		// 		$(".form" + hour).addClass("present");
+		// 	}
+		// }
+
+		// for (let index = 8; index < 10; index++) {
+		// 	updateView(index);
+		// }
+	}
+
+	function startTimer() {
+		setInterval(updateTime, 1000);
+	}
+
+	// start Timer
+	startTimer();
+
+	createSchedule();
+
+	// var x = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5];
+	// for (var i = 0; i < x.length; i++) {
+	// 	var dataHour = localStorage.getItem(x[i]);
+	// 	$(".form" + x[i]).val(dataHour);
+	// }
+
+	$(".saveBtn").on("click", function (event) {
+		// event.preventDefault();
+		var saveTime = $(this).attr("data-time");
+		var formValue = $(this).siblings(".form-control").val();
+		console.log(formValue);
+		console.log("This worked");
+
+		localStorage.setItem(saveTime, formValue);
+	});
 }
-showTime();
 
-function scheduler() {
-	moment(Date);
-	var currentTime = moment();
-	currentTime = currentTime.startOf("hour");
-	var beforeTime = moment().startOf("day").add(8, "hours");
-
-	var time0 = beforeTime.add(1, "h");
-	time0 = time0.format("hh:mm A");
-	$(".block0").text(time0);
-
-	var time1 = beforeTime.add(2, "h");
-	time1 = time1.format("hh:mm A");
-	$(".block1").text(time1);
-
-	var time2 = beforeTime.add(3, "h");
-	time2 = time2.format("hh:mm A");
-	$(".block2").text(time2);
-
-	var time3 = beforeTime.add(4, "h");
-	time3 = time3.format("hh:mm A");
-	$(".block3").text(time3);
-
-	var time4 = beforeTime.add(5, "h");
-	time4 = time4.format("hh:mm A");
-	$(".block4").text(time4);
-
-	var time5 = beforeTime.add(6, "h");
-	time5 = time5.format("hh:mm A");
-	$(".block5").text(time5);
-
-	var time6 = beforeTime.add(7, "h");
-	time6 = time6.format("hh:mm A");
-	$(".block6").text(time6);
-
-	var time7 = beforeTime.add(8, "h");
-	time7 = time7.format("hh:mm A");
-	$(".block7").text(time7);
-
-	var time8 = beforeTime.add(9, "h");
-	time8 = time8.format("hh:mm A");
-	$(".block8").text(time8);
-
-	var time9 = beforeTime.add(10, "h");
-	time9 = time9.format("hh:mm A");
-	$(".block9").text(time9);
-
-	time0 = moment().startOf("day").add(8, "hours");
-	currentTime = currentTime.startOf("hour");
-	if (currentTime.isAfter(time0)) {
-		$(".form8").addClass("past");
-	} else if (currentTime.isBefore(time0)) {
-		$(".form8").addClass("future");
-	} else if (currentTime.isSame(time0)) {
-		$(".form8").addClass("present");
-	}
-
-	time1 = moment().startOf("day").add(9, "hours");
-	currentTime = currentTime.startOf("hour");
-	if (currentTime.isAfter(time1)) {
-		$(".form9").addClass("past");
-	} else if (currentTime.isBefore(time1)) {
-		$(".form9").addClass("future");
-	} else if (currentTime.isSame(time1)) {
-		$(".form9").addClass("present");
-	}
-
-	time2 = moment().startOf("day").add(10, "hours");
-	if (currentTime.isAfter(time2)) {
-		$(".form10").addClass("past");
-	} else if (currentTime.isBefore(time2)) {
-		$(".form10").addClass("future");
-	} else if (currentTime.isSame(time2)) {
-		$(".form10").addClass("present");
-	}
-
-	time3 = moment().startOf("day").add(11, "hours");
-	if (currentTime.isAfter(time3)) {
-		$(".form11").addClass("past");
-	} else if (currentTime.isBefore(time3)) {
-		$(".form11").addClass("future");
-	} else if (currentTime.isSame(time3)) {
-		$(".form11").addClass("present");
-	}
-
-	time4 = moment().startOf("day").add(12, "hours");
-	if (currentTime.isAfter(time4)) {
-		$(".form12").addClass("past");
-	} else if (currentTime.isBefore(time4)) {
-		$(".form12").addClass("future");
-	} else if (currentTime.isSame(time4)) {
-		$(".form12").addClass("present");
-	}
-
-	time5 = moment().startOf("day").add(13, "hours");
-	if (currentTime.isAfter(time5)) {
-		$(".form1").addClass("past");
-	} else if (currentTime.isBefore(time5)) {
-		$(".form1").addClass("future");
-	} else if (currentTime.isSame(time5)) {
-		$(".form1").addClass("present");
-	}
-
-	time6 = moment().startOf("day").add(14, "hours");
-	if (currentTime.isAfter(time6)) {
-		$(".form2").addClass("past");
-	} else if (currentTime.isBefore(time6)) {
-		$(".form2").addClass("future");
-	} else if (currentTime.isSame(time6)) {
-		$(".form2").addClass("present");
-	}
-
-	time7 = moment().startOf("day").add(15, "hours");
-	if (currentTime.isAfter(time7)) {
-		$(".form3").addClass("past");
-	} else if (currentTime.isBefore(time7)) {
-		$(".form3").addClass("future");
-	} else if (currentTime.isSame(time7)) {
-		$(".form3").addClass("present");
-	}
-
-	time8 = moment().startOf("day").add(16, "hours");
-	if (currentTime.isAfter(time8)) {
-		$(".form4").addClass("past");
-	} else if (currentTime.isBefore(time8)) {
-		$(".form4").addClass("future");
-	} else if (currentTime.isSame(time8)) {
-		$(".form4").addClass("present");
-	}
-
-	time9 = moment().startOf("day").add(17, "hours");
-	if (currentTime.isAfter(time9)) {
-		$(".form5").addClass("past");
-	} else if (currentTime.isBefore(time9)) {
-		$(".form5").addClass("future");
-	} else if (currentTime.isSame(time9)) {
-		$(".form5").addClass("present");
-	}
-}
-scheduler();
-
-var x = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5];
-for (var i = 0; i < x.length; i++) {
-	var dataHour = localStorage.getItem(x[i]);
-	$(".form" + x[i]).val(dataHour);
-}
-$(".saveBtn").click(function () {
-	event.preventDefault();
-	var formValue = $(this).siblings(".form-control").val();
-	console.log("This worked");
-	var listItem = $(this).parent().data("hour");
-
-	localStorage.setItem(listItem, formValue);
-});
+// start
+$(init);
