@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display+SC&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 
 body {
 	font-family: "Open Sans", sans-serif;
@@ -7,7 +7,7 @@ body {
 	background-repeat: no-repeat;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
-	background-color: #a5c48686;
+	background-color: #b0c59b86;
 }
 
 textarea {
@@ -24,7 +24,7 @@ textarea {
 	background: linear-gradient(
 		45deg,
 		rgba(131, 58, 180, 1) 0%,
-		rgba(253, 29, 29, 1) 50%,
+		rgb(174, 154, 154) 50%,
 		rgba(252, 176, 69, 1) 100%
 	);
 	color: rgb(255, 255, 255);
@@ -33,7 +33,7 @@ textarea {
 }
 
 h1 {
-	font-family: "Playfair Display SC", serif;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
 .description {
@@ -58,7 +58,7 @@ h1 {
 }
 
 .past {
-	background-color: #ececec;
+	background-color: #c9c9c9;
 	color: white;
 }
 
@@ -84,20 +84,20 @@ h1 {
 	transition: all 0.3s ease-in-out;
 }
 
-.container {
-	border-style: solid;
-	padding: 20px 10px 20px 10px;
-	border: none;
-}
-
 .schedulerHeader {
 	color: rgb(59, 58, 58);
 }
 
 footer {
-	width: 100%;
+	background: linear-gradient(
+		45deg,
+		rgba(131, 58, 180, 1) 0%,
+		rgb(174, 154, 154) 50%,
+		rgba(252, 176, 69, 1) 100%
+	);
 	color: rgb(255, 255, 255);
-	text-align: center;
+	border-radius: 0;
+	border-bottom: 5px solid rgb(255, 255, 255);	text-align: center;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	font-size: 10px;
@@ -133,4 +133,9 @@ footer {
 .input-group-lg > .input-group-prepend > .input-group-text {
 	padding: 0.5rem 1rem;
 	font-size: 1rem;
+}
+
+#greeting, #DigitalCLOCK{
+	align-items: center;
+	text-align: center;
 }
