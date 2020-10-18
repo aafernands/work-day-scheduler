@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
 
 body {
 	font-family: "Open Sans", sans-serif;
@@ -33,7 +33,7 @@ textarea {
 }
 
 h1 {
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: "Josefin Sans", sans-serif;
 }
 
 .description {
@@ -97,7 +97,8 @@ footer {
 	);
 	color: rgb(255, 255, 255);
 	border-radius: 0;
-	border-bottom: 5px solid rgb(255, 255, 255);	text-align: center;
+	border-bottom: 5px solid rgb(255, 255, 255);
+	text-align: center;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	font-size: 10px;
@@ -135,7 +136,14 @@ footer {
 	font-size: 1rem;
 }
 
-#greeting, #DigitalCLOCK{
+#greeting {
 	align-items: center;
 	text-align: center;
+	font-size: 25px;
+}
+
+#DigitalCLOCK {
+	align-items: center;
+	text-align: center;
+	font-size: 15px;
 }
