@@ -6,7 +6,7 @@ function init() {
 		if (session === "AM") {
 			return "Good morning";
 		} else {
-			if (hourNow => 12 || hourNow < 7) {
+			if ((hourNow) => 12 || hourNow < 7) {
 				return "Good afternoon";
 			}
 			return "Good Evening";
@@ -62,6 +62,7 @@ function init() {
 		}
 
 		$scheduleBody.html(schedule);
+	}
 
 	function startTimer() {
 		setInterval(updateTime, 1000);
