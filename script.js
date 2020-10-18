@@ -63,38 +63,6 @@ function init() {
 
 		$scheduleBody.html(schedule);
 
-		// var currentTime = moment();
-
-		// currentTime = currentTime.startOf("hour");
-		// var beforeTime = moment().startOf("day").add(8, "hours");
-
-		// function setTime(hour) {
-		// 	var time = beforeTime.add(hour, "h");
-		// 	time = time.format("hh:mm A");
-		// 	$(".block" + (hour - 1)).text(time);
-		// }
-
-		// for (let index = 1; index < 8; index++) {
-		// 	setTime(index);
-		// }
-
-		// function updateView(hour) {
-		// 	time1 = moment().startOf("day").add(hour, "hours");
-		// 	currentTime = currentTime.startOf("hour");
-		// 	if (currentTime.isAfter(time1)) {
-		// 		$(".form" + hour).addClass("past");
-		// 	} else if (currentTime.isBefore(time1)) {
-		// 		$(".form" + hour).addClass("future");
-		// 	} else if (currentTime.isSame(time1)) {
-		// 		$(".form" + hour).addClass("present");
-		// 	}
-		// }
-
-		// for (let index = 8; index < 10; index++) {
-		// 	updateView(index);
-		// }
-	}
-
 	function startTimer() {
 		setInterval(updateTime, 1000);
 	}
@@ -103,12 +71,6 @@ function init() {
 	startTimer();
 
 	createSchedule();
-
-	// var x = [8, 9, 10, 11, 12, 1, 2, 3, 4, 5];
-	// for (var i = 0; i < x.length; i++) {
-	// 	var dataHour = localStorage.getItem(x[i]);
-	// 	$(".form" + x[i]).val(dataHour);
-	// }
 
 	$(".saveBtn").on("click", function (event) {
 		// event.preventDefault();
