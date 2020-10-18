@@ -2,17 +2,14 @@
 
 ## Assignment
 
-Create a quiz on javascript fundamentals and keep track of high scores.
+Create a daily planner
 
 ## Features
 
-- At the home page the user have the option to either start the quiz by clicking the Start Button or check the highscores;
-- Once the user click start quiz the game page is loaded and the game starts;
-- The countdown starts and for every wrong questions 10 seconds are subtracted from the timer;
-- The quiz contains six JavaScript related questions and the questions are randomized every time the page is refreshed;
-- The game will pause for two seconds after the user choose one answer and the result is displayed: correct or wrong;
-- Once the user is done answering the questions the page is directed to a page displaying the final score and a prompt will colect user initials to compose the highscores.
-- The highscores are stored at the users local storage device.
+- In the top of the scheduller a dinamic clock displays a greeting and the current time;
+- The scheduller is composed by three phases: past (gray blocks), present (red block) and future (green blocks);
+- Once user inputs the desired task into the specified block it can be saved cliking the save button on each block.
+
 
 The following gif video demonstrates the application functionality:
 
