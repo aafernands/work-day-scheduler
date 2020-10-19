@@ -22,7 +22,8 @@ The following gif video demonstrates the application functionality:
   - Bootstrap (https://getbootstrap.com/);
   - Google Fonts (https://fonts.google.com/);
   - W3 Schools (https://www.w3schools.com/);
-- The final version was pushed to homework repository at GitiHub at https://github.com/aafernands/work-day-scheduler
+- The final version was pushed to homework repository at GitiHub at https://github.com/aafernands/work-day-scheduler;
+- Deployed version : https://aafernands.github.io/work-day-scheduler/
 
 ## Authors
 
